@@ -1,5 +1,4 @@
 @echo off
-cls
 
 .paket\paket.bootstrapper.exe prerelease
 if errorlevel 1 (
