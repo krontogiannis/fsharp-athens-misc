@@ -12,7 +12,7 @@
 let gitOwner = "krontogiannis"
 let gitHome = "https://github.com/" + gitOwner
 // The name of the project on GitHub
-let gitName = "fsharp-athens-misc"
+let gitName = "fsharp-meetup-5"
 
 open FsReveal
 open Fake
@@ -103,7 +103,7 @@ Target "KeepRunning" (fun _ ->
     watcher.Dispose()
 )
 
-Target "ReleaseSlides" (fun _ ->
+Target "Release" (fun _ ->
     let tempDocsDir = "temp/gh-pages"
     CleanDir tempDocsDir
     Repository.cloneSingleBranch "" (gitHome + "/" + gitName + ".git") "gh-pages" tempDocsDir
@@ -120,6 +120,6 @@ Target "ReleaseSlides" (fun _ ->
   ==> "KeepRunning"
 
 "GenerateSlides"
-  ==> "ReleaseSlides"
+  ==> "Release"
   
 RunTargetOrDefault "KeepRunning"

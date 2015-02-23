@@ -1,33 +1,89 @@
-﻿- title : FsReveal
-- description : Introduction to FsReveal
-- author : Karlkim Suwanmongkol
-- theme : night
+﻿- title : Athens F# Meetup on 25/02/2015
+- description : F# features
+- author : Kostas Rontogiannis
+- theme : simple
 - transition : default
 
 ***
 
-### What is FsReveal?
+## Athens F# Meetup
 
-- Generates [reveal.js](http://lab.hakim.se/reveal-js/#/) presentation from [markdown](http://daringfireball.net/projects/markdown/)
-- Utilizes [FSharp.Formatting](https://github.com/tpetricek/FSharp.Formatting) for markdown parsing
+25/02/2015
 
-***
-
-### Reveal.js
-
-- A framework for easily creating beautiful presentations using HTML.
-
-
-> **Atwood's Law**: any application that can be written in JavaScript, will eventually be written in JavaScript.
+### F# features and snippets
 
 ***
 
-### FSharp.Formatting
+### About Me
 
-- F# tools for generating documentation (Markdown processor and F# code formatter).
-- It parses markdown and F# script file and generates HTML or PDF.
-- Code syntax highlighting support.
-- It also evaluates your F# code and produce tooltips.
+- Kostas Rontogiannis
+- @krontogiannis
+- http://github.com/krontogiannis
+
+***
+
+### F# features
+
+- Active Patterns
+- Units of Measure
+- Object expressions
+
+***
+
+### Active Patterns
+
+_Active Patterns_ allow programmers to wrap **arbitrary values** 
+in a union-like data structure for easy **pattern matching**. 
+For example, its possible wrap objects with an active pattern, 
+so that you can use objects in pattern matching as easily 
+as any other **union type**.
+
+
+---
+
+### Simple
+
+    let (|Even|Odd|) (input : int) =
+        if input % 2 = 0 then Even else Odd
+
+
+---
+
+### Simple
+
+    let (|Even|Odd|) (input : int) =
+        if input % 2 = 0 then Even else Odd
+
+    let x = 42
+
+    match x with
+    | Even -> printfn "Even"
+    | Odd -> printfn "Odd"
+
+
+
+---
+
+### Parse input
+
+    let (|Integer|_|) (input : string) =
+        match System.Int32.TryParse(input) with
+        | true, x -> Some(x)
+        | false,_ -> None
+
+    let (|Boolean|_|) (input : string) =
+        match System.Boolean.TryParse(input) with
+        | true, x -> Some(x)
+        | false,_ -> None
+    
+
+    let input = System.Console.ReadLine()
+
+    match input with
+    | Integer i -> printfn "Value is an int %d" i
+    | Boolean b -> printfn "Value is a bool %b" b
+    | other     -> printfn "Value is string %s" other
+
 
 ***
 
@@ -126,3 +182,16 @@ $ \Pr(A|B)=\frac{\Pr(B|A)\Pr(A)}{\Pr(B|A)\Pr(A)+\Pr(B|\neg A)\Pr(\neg A)} $
   
 *from [The Reality of a Developer's Life - in GIFs, Of Course](http://server.dzone.com/articles/reality-developers-life-gifs)*
 
+***
+
+#### Slides and samples
+
+https://github.com/palladin/StreamsPresentation
+
+***
+
+### Thank you!
+
+***
+
+## Questions?
