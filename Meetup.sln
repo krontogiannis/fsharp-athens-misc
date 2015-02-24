@@ -20,6 +20,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2CFA2FF5-BDC7-47EB-B15F-BE3B7C45C91D}"
 	ProjectSection(SolutionItems) = preProject
 		activepatterns.fsx = activepatterns.fsx
+		measure.fsx = measure.fsx
+		objectexpressions.fsx = objectexpressions.fsx
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "packet", "packet", "{92B7AC66-702A-4844-A05F-A6312550787F}"

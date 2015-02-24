@@ -1,5 +1,5 @@
 ﻿- title : Athens F# Meetup on 25/02/2015
-- description : F# features
+- description : F# snippets
 - author : Kostas Rontogiannis
 - theme : simple
 - transition : default
@@ -8,9 +8,10 @@
 
 ## Athens F# Meetup
 
-25/02/2015
+### F# snippets
 
-### F# features and snippets
+_25/02/2015_
+http://git.io/AHMT
 
 ***
 
@@ -19,6 +20,7 @@
 - Kostas Rontogiannis
 - @krontogiannis
 - http://github.com/krontogiannis
+
 
 ***
 
@@ -76,6 +78,9 @@ as any other **union type**.
         | true, x -> Some(x)
         | false,_ -> None
     
+---
+
+### Parse input
 
     let input = System.Console.ReadLine()
 
@@ -85,113 +90,91 @@ as any other **union type**.
     | other     -> printfn "Value is string %s" other
 
 
-***
+---
 
-### Syntax Highlighting
+### Simplify LINQ Expressions
 
-#### F# (with tooltips)
-
-    let a = 5
-    let factorial x = [1..x] |> List.reduce (*)
-    let c = factorial a
+    Expression.OfFunc(fun x -> 0 + x + 32 / 5 - 3 + 0 * x)
+    |> simplify
 
 ---
 
-#### C#
+### LinqOptimizer [1](https://github.com/nessos/LinqOptimizer/blob/master/src/LinqOptimizer.Core/ExpressionHelpers.fs#L102), [2](https://github.com/nessos/LinqOptimizer/blob/master/src/LinqOptimizer.Core/CSharpExpressionOptimizer.fs#L24)
 
-    [lang=cs]
-    using System;
-
-    class Program
-    {
-        static void Main()
-        {
-            Console.WriteLine("Hello, world!");
-        }
-    }
-
----
-
-#### JavaScript
-
-    [lang=js]
-    function copyWithEvaluation(iElem, elem) {
-        return function (obj) {
-            var newObj = {};
-            for (var p in obj) {
-                var v = obj[p];
-                if (typeof v === "function") {
-                    v = v(iElem, elem);
-                }
-                newObj[p] = v;
-            }
-            if (!newObj.exactTiming) {
-                newObj.delay += exports._libraryDelay;
-            }
-            return newObj;
-        };
-    }
-
-
----
-
-#### Haskell
- 
-    [lang=haskell]
-    recur_count k = 1 : 1 : zipWith recurAdd (recur_count k) (tail (recur_count k))
-            where recurAdd x y = k * x + y
-
-    main = do
-      argv <- getArgs
-      inputFile <- openFile (head argv) ReadMode
-      line <- hGetLine inputFile
-      let [n,k] = map read (words line)
-      printf "%d\n" ((recur_count k) !! (n-1))
-
-*code from [NashFP/rosalind](https://github.com/NashFP/rosalind/blob/master/mark_wutka%2Bhaskell/FIB/fib_ziplist.hs)*
-
----
-
-### SQL
-
-    [lang=sql]
-    select *
-    from
-    (select 1 as Id union all select 2 union all select 3) as X
-    where Id in (@Ids1, @Ids2, @Ids3)
-
-*sql from [Dapper](https://code.google.com/p/dapper-dot-net/)*
 
 ***
 
-**Bayes' Rule in LaTeX**
+### Units of Measure
 
-$ \Pr(A|B)=\frac{\Pr(B|A)\Pr(A)}{\Pr(B|A)\Pr(A)+\Pr(B|\neg A)\Pr(\neg A)} $
+Units of measure allow programmers to annotate floats and integers with 
+**statically-typed** unit **metadata**. 
+By using quantities with units, you enable the **compiler** 
+to verify that arithmetic relationships have the correct units, 
+which helps **prevent programming errors**.
 
 ***
 
-### The Reality of a Developer's Life 
+### Object Expressions
 
-**When I show my boss that I've fixed a bug:**
-  
-![When I show my boss that I've fixed a bug](http://www.topito.com/wp-content/uploads/2013/01/code-07.gif)
-  
-**When your regular expression returns what you expect:**
-  
-![When your regular expression returns what you expect](http://www.topito.com/wp-content/uploads/2013/01/code-03.gif)
-  
-*from [The Reality of a Developer's Life - in GIFs, Of Course](http://server.dzone.com/articles/reality-developers-life-gifs)*
+An **object expression** is an expression that creates a new instance of an 
+**anonymous** object type that is based on an existing 
+**base type**, **interface**, or **set of interfaces**.
+
+---
+        
+    type Person = { Name : string ; Age : int }
+
+    System.Array.Sort<T>(T[], IComparer<T>)
+
+
+---
+
+    open System.Collections.Generic
+    
+    type PersonNameComparer () =
+        interface IComparer<Person> with
+            member this.Compare(x: Person, y: Person) : int = 
+                x.Name.CompareTo(y.Name)
+    
+    type PersonAgeComparer () =
+        interface IComparer<Person> with
+            member this.Compare(x: Person, y: Person) : int = 
+                x.Age.CompareTo(y.Age)
+
+---
+
+    let pnm = new PersonNameComparer()
+    System.Array.Sort(ps, pnm)
+    
+    let pac = new PersonAgeComparer()
+    System.Array.Sort(ps, pac)
+
+
+---
+
+    let nameCmp = { new IComparer<Person> with 
+                        member this.Compare(x,y) = x.Name.CompareTo(y.Name) }
+    
+    let ageCmp = { new IComparer<Person> with 
+                        member this.Compare(x,y) = x.Age.CompareTo(y.Age) }
+
+    System.Array.Sort(ps, nameCmp)
+    
+    System.Array.Sort(ps, ageCmp)
+
 
 ***
 
 #### Slides and samples
 
-https://github.com/palladin/StreamsPresentation
+https://github.com/krontogiannis/fsharp-meetup-5
+http://krontogiannis.github.io/fsharp-meetup-5
+
+***
+
+## Questions?
 
 ***
 
 ### Thank you!
 
-***
-
-## Questions?
