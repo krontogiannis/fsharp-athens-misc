@@ -50,13 +50,13 @@ let (|Int|_|) (input : Expression) =
     failwith "Not implemented"
 
 let (|Var|_|) (input : Expression) =
-    failwith "Not implemented"
+    failwith "Not implemented"   
 
 let (|Bin|_|) (input : Expression) =
     failwith "Not implemented"
 
 let (|Add|Sub|Mul|Div|) (input : Expression) =
-    failwith "Not implemented"
+    failwith "Invalid"
 
 let rec simplify (expr : Expression) =
     match expr with
@@ -67,10 +67,11 @@ let rec simplify (expr : Expression) =
     // x + 0, 0 + x
 
     // 0 * x, x * 0
-    
+
     // any other case
 
     | _ -> failwith "Not implemented"
+
 
 
 Expression.GetBody(fun x -> -10 + 54 - 2)
@@ -141,7 +142,7 @@ let rec simplify (expr : Expression) =
 
     | _ -> failwith "Invalid expression"
 
-let rec fix opt x =
+let fix opt x =
     let x' = opt x
     if x = x' then x' else opt x'
 

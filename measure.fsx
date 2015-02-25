@@ -1,10 +1,7 @@
 ﻿
 
-
-
 /// Employee type. Salary either in EUR or USD.
 type Employee = { Name : string ; Salary : float }
-
 
 
 
@@ -24,6 +21,7 @@ let usaEmpl =
         { Name = "Clint P. Mitchell"  ; Salary = 30843.1 }
         { Name = "William P. Howard"  ; Salary = 32247.9 }
         { Name = "Mark R. Ross"       ; Salary = 40941.3 }
+        { Name = "John L. Peterkin"   ; Salary = 50990.0 }
     ]
 
 

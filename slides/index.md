@@ -19,15 +19,16 @@ _25/02/2015_
 - Kostas Rontogiannis
 - [@krontogiannis](https://twitter.com/krontogiannis)
 - http://github.com/krontogiannis
+- Nessos, NTUA
 
 
 ***
 
 ### F# snippets
 
-- Active Patterns
-- Units of Measure
-- Object expressions
+- (|Active Patterns|)
+- Units of Measure<1>
+- { Object expressions }
 
 ***
 
@@ -185,5 +186,5 @@ http://krontogiannis.github.io/fsharp-meetup-5
 
 ***
 
-## Thanks :)
+## thnx :)
 
