@@ -2,7 +2,7 @@
 
 
 
-/// Employee type. Salary either in EUR or USD
+/// Employee type. Salary either in EUR or USD.
 type Employee = { Name : string ; Salary : float }
 
 
@@ -21,9 +21,9 @@ let europeEmpl =
 
 let usaEmpl =
     [
-        { Name = "Clint P. Mitchell"  ; Salary = 300843.1 }
-        { Name = "William P. Howard"  ; Salary = 322847.9 }
-        { Name = "Mark R. Ross"       ; Salary = 400941.3 }
+        { Name = "Clint P. Mitchell"  ; Salary = 30843.1 }
+        { Name = "William P. Howard"  ; Salary = 32247.9 }
+        { Name = "Mark R. Ross"       ; Salary = 40941.3 }
     ]
 
 
@@ -36,7 +36,7 @@ let total =
     |> List.sumBy(fun empl -> empl.Salary)  
   
   
-  
+
   
   
   
@@ -80,6 +80,8 @@ type Employee< [<Measure>]'T > = { Name : string ; Salary : float<'T> }
 
 let rate = 0.7<USD/EUR>
 
+float rate
+
 let EURtoUSD (eur : float<EUR>) = rate * eur
 let USDtoEUR (usd : float<USD>) = usd / rate
 
@@ -90,11 +92,12 @@ let europeEmpl =
         { Name = "Sheryl L. Peterkin" ; Salary = 38990.0<EUR> }
     ]
 
+
 let usaEmpl =
     [
-        { Name = "Clint P. Mitchell"  ; Salary = 300843.1<USD> }
-        { Name = "William P. Howard"  ; Salary = 322847.9<USD> }
-        { Name = "Mark R. Ross"       ; Salary = 400941.3<USD> }
+        { Name = "Clint P. Mitchell"  ; Salary = 30843.1<USD> }
+        { Name = "William P. Howard"  ; Salary = 32247.9<USD> }
+        { Name = "Mark R. Ross"       ; Salary = 40941.3<USD> }
     ]
 
   

@@ -1,6 +1,6 @@
 ﻿
 
-// Simple
+//#region Simple
 
 let (|Even|Odd|) (input : int) =
     if input % 2 = 0 then Even else Odd
@@ -11,8 +11,9 @@ match x with
 | Even -> printfn "Even"
 | Odd -> printfn "Odd"
 
+//#endregion
 
-// read input
+//#region Read input
 
 let (|Integer|_|) (input : string) =
     match System.Int32.TryParse(input) with
@@ -32,6 +33,7 @@ match input with
 | Boolean b -> printfn "Value is a bool %b" b
 | other     -> printfn "Value is string %s" other
 
+//#endregion
 
 
 // linq expressions
@@ -107,6 +109,7 @@ Expression.GetBody(fun x -> 0 + x + 32 / 5 - 3 + 0 * x )
 
 
 //#region System.Type
+
 let (|Named|Array|Ptr|Param|) (typ : System.Type) =
     if typ.IsGenericType
     then Named(typ.GetGenericTypeDefinition(), typ.GetGenericArguments())

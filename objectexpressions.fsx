@@ -12,7 +12,7 @@ let ps =
         { Name = "Mark R. Ross"       ; Age = 42 }
     |]
 
-System.Array.Sort<T>(T[], IComparer<T>)
+//System.Array.Sort<T>(T[], IComparer<T>)
 
 open System.Collections.Generic
 
@@ -45,3 +45,4 @@ System.Array.Sort(ps, nameCmp)
 System.Array.Sort(ps, ageCmp)
 
 ps |> Seq.iter (printfn "%A")
+
