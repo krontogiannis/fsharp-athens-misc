@@ -36,7 +36,56 @@ match input with
 //#endregion
 
 
-// linq expressions
+//#region LINQ expressions
+
+open System
+open System.Linq.Expressions
+
+
+type Expression with
+    static member GetBody(func : Expression<Func<'T,'U>>) = func.Body
+
+
+let (|Int|_|) (input : Expression) =
+    failwith "Not implemented"
+
+let (|Var|_|) (input : Expression) =
+    failwith "Not implemented"
+
+let (|Bin|_|) (input : Expression) =
+    failwith "Not implemented"
+
+let (|Add|Sub|Mul|Div|) (input : Expression) =
+    failwith "Not implemented"
+
+let rec simplify (expr : Expression) =
+    match expr with
+    // Terminals
+
+    // Reduce operations on constants
+
+    // x + 0, 0 + x
+
+    // 0 * x, x * 0
+    
+    // any other case
+
+    | _ -> failwith "Not implemented"
+
+
+Expression.GetBody(fun x -> -10 + 54 - 2)
+|> simplify
+
+Expression.GetBody(fun x -> x * 0)
+|> simplify
+
+Expression.GetBody(fun x -> 0 + x + 32 / 5 - 3 + 0 * x )      
+|> simplify
+
+//#endregion
+
+
+//#region LINQ expressions
 
 open System
 open System.Linq.Expressions
@@ -96,16 +145,16 @@ let rec fix opt x =
     let x' = opt x
     if x = x' then x' else opt x'
 
-Expression.GetBody(fun x -> -10 + 54 - 2)
+Expression.GetBody(fun x -> -10 + 54 - 2) 
 |> fix simplify
 
 Expression.GetBody(fun x -> x * 0)
 |> fix simplify
 
-Expression.GetBody(fun x -> 0 + x + 32 / 5 - 3 + 0 * x )      
+Expression.GetBody(fun x -> 0 + x + 32 / 5 - 3 + 0 * x )     
 |> fix simplify
 
-
+//#endregion
 
 
 //#region System.Type

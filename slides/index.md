@@ -17,13 +17,13 @@ _25/02/2015_
 ### About Me
 
 - Kostas Rontogiannis
-- @krontogiannis
+- [@krontogiannis](https://twitter.com/krontogiannis)
 - http://github.com/krontogiannis
 
 
 ***
 
-### F# features
+### F# snippets
 
 - Active Patterns
 - Units of Measure
@@ -122,8 +122,18 @@ An **object expression** is an expression that creates a new instance of an
 ---
         
     type Person = { Name : string ; Age : int }
-
-    System.Array.Sort<T>(T[], IComparer<T>)
+    
+    let ps =
+        [|
+            { Name = "Clifford E. May"    ; Age = 32 }
+            { Name = "Laura J. Moore"     ; Age = 24 }
+            { Name = "Sheryl L. Peterkin" ; Age = 23 }
+            { Name = "Clint P. Mitchell"  ; Age = 53 }
+            { Name = "William P. Howard"  ; Age = 58 }
+            { Name = "Mark R. Ross"       ; Age = 42 }
+        |]
+    
+    System.Array.Sort<T>(ps, ?? : IComparer<T>)
 
 
 ---
@@ -175,5 +185,5 @@ http://krontogiannis.github.io/fsharp-meetup-5
 
 ***
 
-### Thank you!
+## Thanks :)
 
