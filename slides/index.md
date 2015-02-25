@@ -11,7 +11,6 @@
 ### F# snippets
 
 _25/02/2015_
-http://git.io/AHMT
 
 ***
 
